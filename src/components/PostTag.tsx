@@ -50,6 +50,7 @@ export function PostTag({
         <span className={styles.ref}>No. {post.ref}</span>
       </span>
       <span className={styles.body}>
+        {as !== "heading" && hiddenIntro}
         <span className={styles.badges}>
           <span className={styles.category}>
             {categoryLabel(post.category)}
@@ -80,10 +81,7 @@ export function PostTag({
             {post.title}
           </h1>
         ) : (
-          <span className={styles.title}>
-            {hiddenIntro}
-            {post.title}
-          </span>
+          <span className={styles.title}>{post.title}</span>
         )}
         <span className={styles.meta}>
           <span className={styles.metaItem}>
