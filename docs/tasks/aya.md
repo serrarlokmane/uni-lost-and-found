@@ -33,23 +33,23 @@ All the v1 pages exist now (PRs [#22](https://github.com/serrarlokmane/uni-lost-
 
 ### Saturday Nov 7
 
-- [ ] **GitHub 2FA and SSH key** — due Sat 7 — with: Everyone
+- [x] **GitHub 2FA and SSH key** — due Sat 7 — with: Everyone
   - Done when: `ssh -T git@github.com` says "Hi <user>"
   - AI: "On [my OS], walk me through creating an ed25519 SSH key with a passphrase and adding it to GitHub."
 
 ### Sunday Nov 8
 
-- [ ] **First PR: team file** — due Sun 8 — with: Everyone
+- [x] **First PR: team file** — due Sun 8 — with: Everyone
   - Done when: `docs/team/<name>.md` (name, title, what you own, what you want to learn) merged with 1 approval
   - AI: "Explain step by step: new branch, commit one file, push, open a PR, request a reviewer."
 
-- [ ] **Client requirements** — due Sun 8
+- [x] **Client requirements** — due Sun 8
   - Done when: `docs/client-requirements.md`: the problem, the 3 roles, user stories for F1–F11
   - AI: "Help me turn these features into user stories 'As a <role>, I want <goal>, so that <reason>': [paste the feature table]."
 
 ### Monday Nov 9
 
-- [ ] **Problem evidence** — due Mon 9
+- [x] **Problem evidence** — due Mon 9
   - Done when: 3–5 Facebook screenshots with names and faces blurred in `docs/evidence/client/`
 
 ### Wednesday Nov 11
@@ -130,4 +130,8 @@ All the v1 pages exist now (PRs [#22](https://github.com/serrarlokmane/uni-lost-
 
 | Date | Task | Time spent | Proof (link) |
 |---|---|---|---|
-| | | | |
+
+| 7 Nov | GitHub 2FA + SSH key | 1h | ssh -T success (screenshot) |
+| 8 Nov | First PR: team file | 30 min | https://github.com/serrarlokmane/uni-lost-and-found/pull/38 |
+| 8 Nov | Client requirements | 1h | https://github.com/serrarlokmane/uni-lost-and-found/pull/39 |
+| 9 Nov | Problem evidence (illustrations) | 1h | https://github.com/serrarlokmane/uni-lost-and-found/pull/40 |
