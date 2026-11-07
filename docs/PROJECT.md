@@ -205,6 +205,7 @@ erDiagram
   }
   POSTS {
     uuid id PK
+    bigint ref UK "No. 142 on the tag, said at the office"
     uuid owner_id FK
     text type "lost | found"
     text category
