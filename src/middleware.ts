@@ -1,3 +1,4 @@
+import { SESSION_COOKIE_OPTIONS } from "@/lib/cookies";
 import { NextResponse, type NextRequest } from "next/server";
 import { createServerClient } from "@supabase/ssr";
 import { readSupabaseEnv } from "@/lib/env";
@@ -27,6 +28,7 @@ export async function middleware(request: NextRequest) {
   const env = readSupabaseEnv();
   if (env) {
     const supabase = createServerClient(env.url, env.key, {
+      cookieOptions: SESSION_COOKIE_OPTIONS,
       cookies: {
         getAll() {
           return request.cookies.getAll();

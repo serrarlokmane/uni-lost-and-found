@@ -39,3 +39,10 @@
   align-items: center;
   gap: var(--space-1);
 }
+
+/* At phone width the Admin link shows only its shield icon (it keeps aria-label="Admin"). */
+@media (max-width: 420px) {
+  .hideOnSmall {
+    display: none;
+  }
+}

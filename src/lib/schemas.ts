@@ -1,19 +1,10 @@
 import { z } from "zod";
 import { CATEGORY_VALUES, POST_TYPES } from "@/lib/categories";
+import { LIMITS_CLIENT } from "@/lib/limits";
 
 // Server-side validation for every form. The same limits are in the HTML attributes (to help the
 // user) and in the SQL CHECK constraints (the last lock). Keep the three in sync.
-export const LIMITS = {
-  fullName: { min: 2, max: 80 },
-  studentId: { min: 4, max: 20 },
-  password: { min: 8, max: 72 },
-  title: { min: 3, max: 80 },
-  description: { min: 10, max: 1000 },
-  location: { min: 2, max: 80 },
-  claimMessage: { min: 10, max: 1000 },
-  reason: { min: 3, max: 200 },
-  query: { max: 100 },
-} as const;
+export const LIMITS = LIMITS_CLIENT;
 
 const trimmed = (min: number, max: number, what: string) =>
   z
