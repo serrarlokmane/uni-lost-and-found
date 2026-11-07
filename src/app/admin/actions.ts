@@ -73,3 +73,28 @@ export async function reviewPost(
   revalidatePath("/");
   return { tone: "success", message: "Done." };
 }
+
+const claimDecision = z.enum(["accepted", "rejected"]);
+
+/** F8: accept or reject a claim. Accepting resolves the post and rejects the other claims. */
+export async function decideClaim(
+  claimId: string,
+  decision: string,
+  _prev: FormState,
+): Promise<FormState> {
+  await requireAdmin();
+  const id = uuidSchema.safeParse(claimId);
+  const d = claimDecision.safeParse(decision);
+  if (!id.success || !d.success) return INVALID;
+
+  const supabase = await createClient();
+  const { error } = await supabase.rpc("admin_decide_claim", {
+    p_claim_id: id.data,
+    p_decision: d.data,
+  });
+  if (error) return { message: friendlyError(error) };
+
+  revalidatePath("/admin");
+  revalidatePath("/");
+  return { tone: "success", message: "Done." };
+}

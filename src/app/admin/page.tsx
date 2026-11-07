@@ -4,7 +4,7 @@ import { PostTag } from "@/components/PostTag";
 import { getProfile, requireAdmin } from "@/lib/auth";
 import { createClient } from "@/lib/supabase";
 import { formatDay } from "@/lib/format";
-import { reviewPost, reviewUser } from "./actions";
+import { decideClaim, reviewPost, reviewUser } from "./actions";
 import { AdminButton, RejectWithReason } from "./AdminForm";
 import styles from "./admin.module.css";
 
@@ -15,7 +15,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return { title: isAdmin ? "Admin · Lqito" : "Not found · Lqito" };
 }
 
-const TABS = ["accounts", "posts", "log"] as const;
+const TABS = ["accounts", "posts", "claims", "log"] as const;
 type Tab = (typeof TABS)[number];
 type Client = Awaited<ReturnType<typeof createClient>>;
 
@@ -34,6 +34,7 @@ export default async function AdminPage({ searchParams }: Props) {
   const tabs: { id: Tab; label: string; count?: number }[] = [
     { id: "accounts", label: "Accounts", count: c?.pending_users },
     { id: "posts", label: "Posts", count: c?.pending_posts },
+    { id: "claims", label: "Claims", count: c?.pending_claims },
     { id: "log", label: "Log" },
   ];
 
@@ -61,6 +62,7 @@ export default async function AdminPage({ searchParams }: Props) {
 
       {tab === "accounts" && <Accounts supabase={supabase} />}
       {tab === "posts" && <Posts supabase={supabase} />}
+      {tab === "claims" && <Claims supabase={supabase} />}
       {tab === "log" && <Log supabase={supabase} />}
     </>
   );
@@ -206,6 +208,65 @@ async function Posts({ supabase }: { supabase: Client }) {
                 action={reviewPost.bind(null, post.id, "rejected")}
                 id={post.id}
                 who={post.title}
+              />
+            </div>
+          )}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+async function Claims({ supabase }: { supabase: Client }) {
+  const { data: claims, error } = await supabase.rpc("admin_list_claims", {
+    p_status: "pending",
+  });
+  if (error) return <p role="alert">Could not load claims.</p>;
+  if (!claims.length) return <p className="muted">No claims are waiting.</p>;
+
+  return (
+    <ul className={styles.list}>
+      {claims.map((claim) => (
+        <li key={claim.id} className={`panel ${styles.review}`}>
+          <h2 className={styles.claimTitle}>
+            <Link href={`/posts/${claim.post_id}`}>
+              No. {claim.post_ref}: {claim.post_title}
+            </Link>{" "}
+            <span className="muted">
+              ({claim.post_type === "found" ? "found item" : "lost item"})
+            </span>
+          </h2>
+          <details>
+            <summary>What the post says</summary>
+            <p className={styles.description}>{claim.post_description}</p>
+          </details>
+          <p>
+            <strong>{claim.claimant_name}</strong> · student ID{" "}
+            <strong>{claim.claimant_student_id}</strong> · sent{" "}
+            {formatDay(claim.created_at)}
+          </p>
+          <blockquote className={styles.quote}>{claim.message}</blockquote>
+          {claim.is_conflict ? (
+            <p className={styles.conflict}>
+              This claim is yours or is on your own post: another admin must
+              decide it.
+            </p>
+          ) : (
+            <div className={styles.actions}>
+              <AdminButton
+                action={decideClaim.bind(null, claim.id, "accepted")}
+                label="Accept"
+                who={`claim of ${claim.claimant_name} on No. ${claim.post_ref}`}
+                pendingText="Accepting…"
+                confirm="Accept this claim? The post becomes resolved, the other claims on it are rejected, and the student is told to come to the office."
+                variant="primary"
+              />
+              <AdminButton
+                action={decideClaim.bind(null, claim.id, "rejected")}
+                label="Reject"
+                who={`claim of ${claim.claimant_name} on No. ${claim.post_ref}`}
+                pendingText="Rejecting…"
+                variant="secondary"
               />
             </div>
           )}
