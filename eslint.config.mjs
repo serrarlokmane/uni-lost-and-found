@@ -20,6 +20,7 @@ const eslintConfig = [
       "next-env.d.ts",
       ".agents/**",
       "coverage/**",
+      "src/lib/database.types.ts",
     ],
   },
 ];
