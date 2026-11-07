@@ -27,7 +27,7 @@
 |---|---|---|---|
 | **Lokmane** | Developer | **All website code:** skeleton, SQL (tables, RLS, functions), Supabase client, sign-up/login, posts, search, admin dashboard, claims, middleware (CSP, headers), `/api/health`, tests, Student Card change | ~30 (see "Lokmane's safety cuts") |
 | **Younes** | Project Manager | Board, issues, CODEOWNERS, meetings, minutes, work log, evidence, report assembly — 7; scope + acceptance criteria — 2; **functional review of every app PR** (runs it locally, clicks through) — 2 | **11** |
-| **Sif** | DevOps Engineer | Dockerfile + compose — 2; CI quality workflow — 2; GHCR + Render + auto-deploy + pipeline test — 4; CI/CD + architecture diagrams + pipeline write-up — 2; pre-demo check — 1 | **11** |
+| **Sif** | DevOps Engineer | Dockerfile + compose — 2; CI quality workflow — 2; Vercel project check + pipeline test — 4; CI/CD + architecture diagrams + pipeline write-up — 2; pre-demo check — 1 | **11** |
 | **Anfel** | Company Manager | Use Case diagram — 1; CI security workflows (npm audit, gitleaks, CodeQL), Dependabot, PR template — 3; **security review of every SQL PR** — 2; threat model v1 + v2 + security section — 4; slides assembly — 1 | **11** |
 | **Aya** | Client | Requirements + problem evidence — 1; test script + guided client test + acceptance — 3; security tests (2 rounds) + accessibility test — 4; demo data — 1; user guide — 1; backup video — 1 | **11** |
 
@@ -67,8 +67,8 @@ Nobody else writes app code to "help". They help by testing fast and reporting c
 |---|---|
 | Sat Nov 7 | Kickoff, everyone has access |
 | Fri Nov 13 | All SQL done, app skeleton, Docker, CI green |
-| Thu Nov 19 | All v1 features on the live Render URL |
-| Sun Nov 22 | Auto-deploy works end to end |
+| Thu Nov 19 | All v1 features on the live Vercel URL |
+| Sun Nov 22 | Pipeline works end to end (PR → CI → merge → live on Vercel) |
 | Wed Nov 25 | Code freeze |
 | Fri Nov 27 | Presentation |
 
@@ -101,8 +101,8 @@ Every app PR: Lokmane opens it, CI must be green, Younes runs it locally and app
 | Sat 14 | F1: sign-up, login, logout, pending page | Week 2 issues | CI/CD and architecture diagrams | — | — |
 | Sun 15 | F5 + F6: home, search, filters, post details | Admin account for testing | — | — | — |
 | Mon 16 | F3 + F9: create post, My page, close post | Safety-cut check | App in Docker with the real database | — | — |
-| Tue 17 | F2 + F4 + F10: admin dashboard | — | Push the image to GHCR | — | Demo data plan |
-| Wed 18 | F7 + F8: claims | — | Render service | RLS review | — |
+| Tue 17 | F2 + F4 + F10: admin dashboard | — | — (Vercel builds from GitHub) | — | Demo data plan |
+| Wed 18 | F7 + F8: claims | — | Check the Vercel project | RLS review | — |
 | Thu 19 | Data-layer tests | Prioritize the feedback<br>Start the evidence folder | — | — | Guided client test |
 | Fri 20 | Fix must-fix issues (batch 1) | Weekly meeting #3 | — | Threat model v2 | Security tests round 1 + accessibility test |
 
@@ -110,7 +110,7 @@ Every app PR: Lokmane opens it, CI must be green, Younes runs it locally and app
 
 | Day | Lokmane | Younes | Sif | Anfel | Aya |
 |---|---|---|---|---|---|
-| Sat 21 | Fix must-fix issues (batch 2) | Week 3 issues | Auto-deploy | — | Load the demo data |
+| Sat 21 | Fix must-fix issues (batch 2) | Week 3 issues | — (Vercel deploys `main` by itself) | — | Load the demo data |
 | Sun 22 | Student Card migration (applied in advance) | — | Pipeline end-to-end test | — | Security tests round 2 |
 | Mon 23 | Student Card code (draft PR, not merged) | Collect the evidence | Pipeline write-up | Security section | User guide |
 | Tue 24 | Backup video<br>Own slides + "What I learned" | Own slides + "What I learned" | Own slides + "What I learned" | Own slides + "What I learned"<br>Slides assembled | Backup video<br>Own slides + "What I learned" |
@@ -140,9 +140,8 @@ Every app PR: Lokmane opens it, CI must be green, Younes runs it locally and app
 
 | Name | Where | Value |
 |---|---|---|
-| `SUPABASE_URL` | `.env` (local), Render | Supabase → Project Settings → Data API |
-| `SUPABASE_PUBLISHABLE_KEY` | `.env` (local), Render | Supabase → Project Settings → API Keys → `sb_publishable_...` |
-| `RENDER_DEPLOY_HOOK_URL` | GitHub Secret only | Render → service → Settings → Deploy Hook |
+| `SUPABASE_URL` | `.env` (local), Vercel | Supabase → Project Settings → Data API |
+| `SUPABASE_PUBLISHABLE_KEY` | `.env` (local), Vercel (type "sensitive") | Supabase → Project Settings → API Keys → `sb_publishable_...` |
 
 No `NEXT_PUBLIC_` prefix. **No secret key (`sb_secret_...`) or service_role key anywhere.** The app refuses to start if the key starts with `sb_secret_`.
 
@@ -194,7 +193,7 @@ rollback;
 4. **Don't import zod or server files into client components.** Keep the category list in its own small file, `src/lib/categories.ts`.
 5. **A moderate `minimatch` advisory is dev-only** (ESLint tooling). CI audits production dependencies at `high`, so it doesn't block. Write it in the security report as an accepted risk.
 6. **gitleaks-action is free on personal accounts** (a license is needed only for organizations).
-7. **Render's free plan sleeps after 15 minutes idle.** The first load takes about 50 s.
+7. **Hosting moved from Render to Vercel on Sat Nov 7** (team decision): no sleep, a preview URL for every PR, no deploy hook secret.
 8. **Check `auth.uid() is null` first in every function** and raise an error. In SQL, `NULL = x` is `NULL`, not `false`, so a missing check can let a call through.
 9. **Never read the role from `user_metadata` / `raw_user_meta_data`.** Users can change their own metadata. The trigger copies only `full_name` and `student_id`.
 10. **Supabase's built-in email only sends to your team's addresses.** That's why "Confirm email" is off in v1.
@@ -212,8 +211,8 @@ gantt
   section Milestones
   Kickoff                   :milestone, 2026-11-07, 0d
   SQL + CI green            :milestone, 2026-11-13, 0d
-  v1 live on Render         :milestone, 2026-11-19, 0d
-  Auto-deploy works         :milestone, 2026-11-22, 0d
+  v1 live on Vercel         :milestone, 2026-11-19, 0d
+  Pipeline works end to end :milestone, 2026-11-22, 0d
   Code freeze               :milestone, 2026-11-25, 0d
   Presentation              :milestone, 2026-11-27, 0d
 
@@ -238,8 +237,8 @@ gantt
   Dockerfile + compose      :2026-11-10, 2d
   CI quality                :2026-11-12, 1d
   Diagrams                  :2026-11-14, 1d
-  Docker, GHCR, Render      :2026-11-16, 3d
-  Auto-deploy + e2e test    :2026-11-21, 2d
+  Vercel project check      :2026-11-16, 3d
+  Pipeline e2e test         :2026-11-21, 2d
   Write-up + pre-demo       :2026-11-23, 4d
 
   section Anfel (Company Mgr)

@@ -1,0 +1,48 @@
+# Who reviews what. GitHub asks these people automatically on every PR.
+# Built from docs/PLAN.md → "Who touches which files". The last matching line wins.
+# Lokmane = @serrarlokmane · Younes = @y11nax · Sif = @Sifeddinebkn · Anfel = @zeghini1anfel · Aya = @AYLA43
+
+# Default: the Project Manager sees every PR
+*                                   @y11nax
+
+# App code (Lokmane writes it): Younes checks it works
+/src/                               @y11nax
+/tests/                             @y11nax
+/package.json                       @y11nax
+/package-lock.json                  @y11nax
+/next.config.ts                     @y11nax
+# SQL: Anfel checks it is safe, Younes checks it works
+/supabase/                          @zeghini1anfel @y11nax
+
+# DevOps (Sif writes it): Lokmane reviews
+/Dockerfile                         @serrarlokmane
+/docker-compose.yml                 @serrarlokmane
+/.dockerignore                      @serrarlokmane
+/.github/workflows/ci.yml           @serrarlokmane
+/docs/diagrams/cicd.md              @y11nax
+/docs/diagrams/architecture.md      @y11nax
+/docs/report/cicd.md                @y11nax
+
+# Security (Anfel writes it): Sif reviews the workflows, Aya the docs
+/.github/workflows/security.yml     @Sifeddinebkn
+/.github/workflows/codeql.yml       @Sifeddinebkn
+/.github/dependabot.yml             @Sifeddinebkn
+/.github/pull_request_template.md   @Sifeddinebkn
+/docs/diagrams/use-case.md          @AYLA43
+/docs/threat-model.md               @AYLA43
+/docs/report/security.md            @AYLA43
+
+# Project management (Younes writes it): Anfel reviews
+/.github/CODEOWNERS                 @zeghini1anfel
+/docs/minutes/TEMPLATE.md           @zeghini1anfel
+/docs/work-log.md                   @zeghini1anfel
+/docs/evidence/                     @zeghini1anfel
+/docs/scope.md                      @zeghini1anfel
+/docs/report/REPORT.md              @zeghini1anfel
+
+# Client (Aya writes it): Younes reviews
+/docs/client-requirements.md        @y11nax
+/docs/tests/                        @y11nax
+/docs/acceptance.md                 @y11nax
+/docs/user-guide.md                 @y11nax
+/docs/evidence/client/              @y11nax
