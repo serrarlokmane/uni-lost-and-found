@@ -1,0 +1,59 @@
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.label {
+  font-weight: 600;
+}
+
+.input {
+  width: 100%;
+  min-height: 48px;
+  padding: var(--space-3);
+  border: 1.5px solid var(--color-input-border);
+  border-radius: var(--radius);
+  background: var(--color-card);
+  color: var(--color-fg);
+  font: inherit;
+}
+
+.input[aria-invalid="true"] {
+  border-color: var(--color-error);
+}
+
+.textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.help {
+  margin: 0;
+  font-size: 14px;
+  color: var(--color-muted-fg);
+}
+
+.error {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-error);
+}
+
+.alertError,
+.alertSuccess {
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius);
+  border: 1.5px solid currentColor;
+  background: var(--color-card);
+  font-weight: 600;
+}
+
+.alertError {
+  color: var(--color-error);
+}
+
+.alertSuccess {
+  color: var(--color-found);
+}

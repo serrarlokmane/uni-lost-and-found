@@ -17,6 +17,19 @@
 - **You write the minutes of the meeting on Fri Nov 13 (weekly #2)**: copy `docs/minutes/TEMPLATE.md`, fill it during the meeting, open the PR the same evening.
 - **After each task:** add one row to "My work log" at the bottom of this file (in the same PR as the task when you can).
 
+## What is left for you (updated Sat Nov 7)
+
+The app is ready for Docker: `next.config.ts` already has `output: "standalone"`, and `/api/health` exists (PR [#5](https://github.com/serrarlokmane/uni-lost-and-found/pull/5)).
+
+| Task | Deadline |
+|---|---|
+| Dockerfile: multi-stage, `node:24-alpine`, user `node`; the image starts with `node .next/standalone/server.js` (not `next start`); `HEALTHCHECK` on `/api/health` | Tue Nov 10 |
+| docker-compose | Wed Nov 11 |
+| CI workflow `.github/workflows/ci.yml`: format, lint, typecheck, test, build, Docker build; green | Thu Nov 12 |
+| Push the image to GHCR (`deploy.yml`) | Tue Nov 17 |
+| Render service from the GHCR image with the 2 env vars `SUPABASE_URL` and `SUPABASE_PUBLISHABLE_KEY` (Environment tab, never in a file); send the URL to Lokmane | Wed Nov 18 |
+| Auto-deploy with the Render deploy hook | Sat Nov 21 |
+
 ## Week 1 — Foundations (Nov 7 → Nov 13)
 
 ### Saturday Nov 7
@@ -37,6 +50,7 @@
 ### Tuesday Nov 10
 
 - [ ] **Dockerfile** — due Tue 10
+  - Start command: `node .next/standalone/server.js` (copy `.next/static` and `public` next to it)
   - Done when: multi-stage, `node:24-alpine`, `output: "standalone"`, user `node`, `HEALTHCHECK` on `/api/health`; builds locally
   - AI: "Write a multi-stage Dockerfile for a Next.js 15 standalone app on node:24-alpine that runs as a non-root user, with a HEALTHCHECK."
 

@@ -19,6 +19,21 @@
 - **You write the minutes of the meeting on Fri Nov 20 (weekly #3)**: copy `docs/minutes/TEMPLATE.md`, fill it during the meeting, open the PR the same evening.
 - **After each task:** add one row to "My work log" at the bottom of this file (in the same PR as the task when you can).
 
+## What is left for you (updated Sat Nov 7)
+
+Lokmane finished all the SQL and the app code. The SQL PRs are stacked: review them in this order. For each one, comment, then approve or request changes. Lokmane applies each migration to the cloud project after your approval.
+
+| Task | Deadline |
+|---|---|
+| Security review: SQL 1, PR [#9](https://github.com/serrarlokmane/uni-lost-and-found/pull/9) | Tue Nov 10 |
+| Security review: SQL 2, PR [#10](https://github.com/serrarlokmane/uni-lost-and-found/pull/10) | Wed Nov 11 |
+| Security review: SQL 3, PR [#11](https://github.com/serrarlokmane/uni-lost-and-found/pull/11) | Thu Nov 12 |
+| Security review: F1 sign-up and login, PR [#22](https://github.com/serrarlokmane/uni-lost-and-found/pull/22) (role never from `user_metadata`, HttpOnly cookie) | Sat Nov 14 |
+| Security review: admin dashboard, PR [#25](https://github.com/serrarlokmane/uni-lost-and-found/pull/25) (admin checked in the page, the action and the SQL) | Tue Nov 17 |
+| Security review: claims, PR [#26](https://github.com/serrarlokmane/uni-lost-and-found/pull/26) | Wed Nov 18 |
+| Security review: data-layer tests + security self-review, PR [#27](https://github.com/serrarlokmane/uni-lost-and-found/pull/27) | Thu Nov 19 |
+| Security review: Student Card migration, PR [#29](https://github.com/serrarlokmane/uni-lost-and-found/pull/29) | Sun Nov 22 |
+
 ## Week 1 — Foundations (Nov 7 → Nov 13)
 
 ### Saturday Nov 7
@@ -45,6 +60,7 @@
 ### Tuesday Nov 10
 
 - [ ] **Security review: SQL 1** — due Tue 10
+  - PR: [#9](https://github.com/serrarlokmane/uni-lost-and-found/pull/9)
   - Done when: review comment on Lokmane's SQL 1 PR: RLS on every table, no write grants for anon/authenticated, every function checks auth.uid() and uses set search_path = '', role never read from user_metadata; approve or request changes
   - AI: "Review this Supabase SQL for security like a senior reviewer: RLS, grants, SECURITY DEFINER functions, search_path, auth.uid() checks. List problems with line numbers: [paste SQL]."
 
@@ -55,12 +71,14 @@
   - AI: "Help me write a short STRIDE threat model for a website with visitors, students approved by an admin, and admins. Focus on fake accounts, privilege escalation, reading other students' IDs and false claims."
 
 - [ ] **Security review: SQL 2** — due Wed 11
+  - PR: [#10](https://github.com/serrarlokmane/uni-lost-and-found/pull/10)
   - Done when: review comment on Lokmane's SQL 2 PR: RLS on every table, no write grants for anon/authenticated, every function checks auth.uid() and uses set search_path = '', role never read from user_metadata; approve or request changes
   - AI: "Review this Supabase SQL for security like a senior reviewer: RLS, grants, SECURITY DEFINER functions, search_path, auth.uid() checks. List problems with line numbers: [paste SQL]."
 
 ### Thursday Nov 12
 
 - [ ] **Security review: SQL 3** — due Thu 12
+  - PR: [#11](https://github.com/serrarlokmane/uni-lost-and-found/pull/11)
   - Done when: review comment on Lokmane's SQL 3 PR: RLS on every table, no write grants for anon/authenticated, every function checks auth.uid() and uses set search_path = '', role never read from user_metadata; approve or request changes
   - AI: "Review this Supabase SQL for security like a senior reviewer: RLS, grants, SECURITY DEFINER functions, search_path, auth.uid() checks. List problems with line numbers: [paste SQL]."
 
