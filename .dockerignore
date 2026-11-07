@@ -1,0 +1,16 @@
+# Keep the build context small, and never send secrets into the image.
+.env
+.env.*
+!.env.example
+.git
+.github
+.next
+.vercel
+node_modules
+coverage
+docs
+supabase
+tests
+*.md
+.DS_Store
+npm-debug.log*
