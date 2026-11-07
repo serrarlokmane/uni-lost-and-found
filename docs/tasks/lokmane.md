@@ -157,4 +157,5 @@
 
 | Date | Task | Time spent | Proof (link) |
 |---|---|---|---|
-| | | | |
+| 2026-11-06 | App skeleton: Next.js 15, design tokens, header, `/api/health`, Prettier, Vitest | 3h | [#2](https://github.com/serrarlokmane/uni-lost-and-found/issues/2) |
+| 2026-11-07 | Design system: "Tag" direction (3 directions compared, A chosen) | 2h | [#3](https://github.com/serrarlokmane/uni-lost-and-found/issues/3) |

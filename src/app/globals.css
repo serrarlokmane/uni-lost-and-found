@@ -1,0 +1,173 @@
+/* Design tokens: see docs/design-system.md ("Tag" direction). Components use these variables only. */
+:root {
+  --color-bg: #f3f4f1;
+  --color-fg: #1b2440;
+  --color-card: #ffffff;
+  --color-muted-fg: #545b6b;
+  --color-border: #d5d8de;
+  --color-input-border: #7c8294;
+  --color-primary: #1b2440;
+  --color-on-primary: #ffffff;
+  --color-link: #2b4cc2;
+  --color-lost: #b4410e;
+  --color-lost-tag: #edcf7e;
+  --color-found: #1a6443;
+  --color-found-tag: #cfe6d8;
+  --color-error: #b91c1c;
+  --color-ring: #2b4cc2;
+
+  /* Spacing scale: 4, 8, 12, 16, 24, 32, 48px */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+
+  --max-width: 760px;
+  --radius: 8px;
+  --radius-card: 10px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #10141f;
+    --color-fg: #e6e8ee;
+    --color-card: #181e2c;
+    --color-muted-fg: #a3aab8;
+    --color-border: #2c3446;
+    --color-input-border: #737c91;
+    --color-primary: #c9d3f5;
+    --color-on-primary: #10141f;
+    --color-link: #9db1f5;
+    --color-lost: #f5a06e;
+    --color-lost-tag: #4a3b12;
+    --color-found: #6fd69a;
+    --color-found-tag: #173b2b;
+    --color-error: #f98b8b;
+    --color-ring: #9db1f5;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: light dark;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading), system-ui, sans-serif;
+  font-weight: 600;
+  margin: 0 0 var(--space-4);
+}
+
+h1 {
+  font-size: 28px;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+h2 {
+  font-size: 20px;
+  line-height: 1.3;
+}
+
+a {
+  color: var(--color-link);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-ring);
+  outline-offset: 2px;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+}
+
+main.container {
+  padding-top: var(--space-5);
+  padding-bottom: var(--space-7);
+}
+
+.muted {
+  color: var(--color-muted-fg);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Buttons: 44px touch target (design system §4). */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0 var(--space-4);
+  border: 1.5px solid transparent;
+  border-radius: var(--radius);
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+.btn-secondary {
+  background: var(--color-card);
+  color: var(--color-fg);
+  border-color: var(--color-input-border);
+}
+
+.btn-text {
+  color: var(--color-fg);
+  padding: 0 var(--space-3);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .btn {
+    transition: opacity 150ms ease;
+  }
+  .btn:hover:not(:disabled) {
+    opacity: 0.88;
+  }
+}
