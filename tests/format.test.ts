@@ -18,6 +18,7 @@ describe("formatDay", () => {
 describe("categoryLabel", () => {
   it("shows a label, and 'Other' for an unknown value", () => {
     expect(categoryLabel("keys")).toBe("Keys");
-    expect(categoryLabel("student_card")).toBe("Other");
+    expect(categoryLabel("student_card")).toBe("Student card");
+    expect(categoryLabel("weapons")).toBe("Other");
   });
 });

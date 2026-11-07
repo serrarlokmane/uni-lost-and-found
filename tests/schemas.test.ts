@@ -67,13 +67,18 @@ describe("postSchema", () => {
   it("accepts a valid post", () => {
     expect(postSchema.safeParse(valid).success).toBe(true);
   });
-  it("refuses an unknown type or category (student_card is not in v1 yet)", () => {
+  it("refuses an unknown type or category", () => {
     expect(postSchema.safeParse({ ...valid, type: "stolen" }).success).toBe(
       false,
     );
     expect(
-      postSchema.safeParse({ ...valid, category: "student_card" }).success,
+      postSchema.safeParse({ ...valid, category: "weapons" }).success,
     ).toBe(false);
+  });
+  it("accepts the Student card category", () => {
+    expect(
+      postSchema.safeParse({ ...valid, category: "student_card" }).success,
+    ).toBe(true);
   });
   it("refuses a title that is only spaces", () => {
     expect(postSchema.safeParse({ ...valid, title: "     " }).success).toBe(

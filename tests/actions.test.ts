@@ -105,7 +105,7 @@ describe("createPost (F3)", () => {
   it("never sends invalid input to the database", async () => {
     const state = await createPost(
       {},
-      form({ ...valid, category: "student_card", title: "x" }),
+      form({ ...valid, category: "weapons", title: "x" }),
     );
     expect(rpc).not.toHaveBeenCalled();
     expect(state.errors?.category).toBeDefined();

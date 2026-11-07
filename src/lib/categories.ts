@@ -7,6 +7,7 @@ export const CATEGORIES = [
   { value: "bags", label: "Bags" },
   { value: "clothing", label: "Clothing" },
   { value: "documents", label: "Documents" },
+  { value: "student_card", label: "Student card" },
   { value: "other", label: "Other" },
 ] as const;
 
