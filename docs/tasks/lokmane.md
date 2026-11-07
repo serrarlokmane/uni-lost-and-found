@@ -159,3 +159,7 @@
 |---|---|---|---|
 | 2026-11-06 | App skeleton: Next.js 15, design tokens, header, `/api/health`, Prettier, Vitest | 3h | [#2](https://github.com/serrarlokmane/uni-lost-and-found/issues/2) |
 | 2026-11-07 | Design system: "Tag" direction (3 directions compared, A chosen) | 2h | [#3](https://github.com/serrarlokmane/uni-lost-and-found/issues/3) |
+| 2026-11-07 | SQL 1: profiles, posts, RLS, trigger, create_post, close_post (26 pgTAP tests) | 2h | [#6](https://github.com/serrarlokmane/uni-lost-and-found/issues/6) |
+| 2026-11-07 | SQL 2: search_posts, admin_log, admin review, admin lists (27 tests) | 1.5h | [#7](https://github.com/serrarlokmane/uni-lost-and-found/issues/7) |
+| 2026-11-07 | SQL 3: claims, create_claim, admin_decide_claim (28 tests) | 1.5h | [#8](https://github.com/serrarlokmane/uni-lost-and-found/issues/8) |
+| 2026-11-07 | Supabase client, auth helpers, zod, middleware (CSP nonce), security headers | 2h | [#12](https://github.com/serrarlokmane/uni-lost-and-found/issues/12) |
