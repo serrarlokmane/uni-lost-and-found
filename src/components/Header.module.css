@@ -1,0 +1,41 @@
+.header {
+  background: var(--color-card);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  min-height: 64px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 44px; /* design system: 44px touch targets */
+  font-family: var(--font-heading), system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 22px;
+  letter-spacing: -0.01em;
+  color: var(--color-fg);
+  text-decoration: none;
+}
+
+/* The logo is a small tag: manila fill, ink outline, punched hole. */
+.logo {
+  fill: var(--color-lost-tag);
+  stroke: var(--color-fg);
+}
+
+.logoHole {
+  fill: var(--color-card);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
