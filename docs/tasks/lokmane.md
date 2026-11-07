@@ -163,3 +163,9 @@
 | 2026-11-07 | SQL 2: search_posts, admin_log, admin review, admin lists (27 tests) | 1.5h | [#7](https://github.com/serrarlokmane/uni-lost-and-found/issues/7) |
 | 2026-11-07 | SQL 3: claims, create_claim, admin_decide_claim (28 tests) | 1.5h | [#8](https://github.com/serrarlokmane/uni-lost-and-found/issues/8) |
 | 2026-11-07 | Supabase client, auth helpers, zod, middleware (CSP nonce), security headers | 2h | [#12](https://github.com/serrarlokmane/uni-lost-and-found/issues/12) |
+| 2026-11-07 | F1: sign-up, login, logout, pending page (+ HttpOnly cookie fix) | 2h | [#14](https://github.com/serrarlokmane/uni-lost-and-found/issues/14) |
+| 2026-11-07 | F5 + F6: home, search, filters, post details, 404 | 2h | [#15](https://github.com/serrarlokmane/uni-lost-and-found/issues/15) |
+| 2026-11-07 | F3 + F9: new post, My page, close post | 2h | [#16](https://github.com/serrarlokmane/uni-lost-and-found/issues/16) |
+| 2026-11-07 | F2 + F4 + F10: admin dashboard | 2.5h | [#17](https://github.com/serrarlokmane/uni-lost-and-found/issues/17) |
+| 2026-11-07 | F7 + F8: claims | 1.5h | [#18](https://github.com/serrarlokmane/uni-lost-and-found/issues/18) |
+| 2026-11-07 | Data-layer tests (18 tests), security self-review, full journey on a clean DB | 1.5h | [#19](https://github.com/serrarlokmane/uni-lost-and-found/issues/19) |
