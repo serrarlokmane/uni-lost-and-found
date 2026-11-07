@@ -1,0 +1,143 @@
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.head h1 {
+  margin: 0;
+}
+
+.tabs {
+  display: flex;
+  gap: var(--space-1);
+  margin: var(--space-5) 0 var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.tab {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 var(--space-4);
+  border-bottom: 3px solid transparent;
+  margin-bottom: -1px;
+  color: var(--color-muted-fg);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.tab[aria-current="page"] {
+  color: var(--color-fg);
+  border-bottom-color: var(--color-fg);
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.reason,
+.good {
+  margin: 0;
+  padding: var(--space-2) var(--space-3);
+  border-left: 4px solid currentColor;
+  background: var(--color-card);
+  font-weight: 600;
+}
+
+.reason {
+  color: var(--color-lost);
+}
+
+.good {
+  color: var(--color-found);
+}
+
+.confirm summary {
+  list-style: none;
+  width: fit-content;
+}
+
+.confirm summary::-webkit-details-marker {
+  display: none;
+}
+
+.confirmBox {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.confirmBox p {
+  margin: 0;
+}
+
+.claim {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.claim p {
+  margin: 0;
+}
+
+.claimHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.claimLink {
+  font-family: var(--font-heading), system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.message {
+  white-space: pre-line;
+}
+
+.badge {
+  padding: 0 var(--space-2);
+  border: 1.5px solid currentColor;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-muted-fg);
+}
+
+.badgeFound {
+  color: var(--color-found);
+}
+
+.badgeLost {
+  color: var(--color-lost);
+}
