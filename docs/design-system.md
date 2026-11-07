@@ -80,7 +80,7 @@ Sentence case everywhere ("New post", not "NEW POST"). No all-caps labels.
 - **Body:** category (muted, 600), title (Lexend 18px), then place and date with MapPin and Calendar icons (no `·` separators).
 - The whole tag is one link to `/posts/[id]` with the title as its accessible name.
 - **Status:** on My page and admin lists a status badge sits next to the category: `Pending`, `Published`, `Rejected`, `Returned`.
-- **Resolved:** opacity 0.72, a "Returned" badge with a Check icon, and the claim button is hidden.
+- **Resolved:** the stub turns grey (`--color-bg` background, `--color-muted-fg` text), a "Returned" badge with a Check icon, and the claim button is hidden. No opacity on the text: it would drop contrast below 4.5:1 (found by Lighthouse).
 
 **Post details page:** a big tag at the top (stub 96px, title as `h1`), then the description, then the action box: claim form for students, "Close post" for the owner, or a "Log in to claim it" link for visitors.
 
