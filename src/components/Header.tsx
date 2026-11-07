@@ -1,10 +1,14 @@
 import Link from "next/link";
-import { Plus } from "lucide-react";
+import { Plus, Shield } from "lucide-react";
+import { getProfile } from "@/lib/auth";
 import styles from "./Header.module.css";
 
-// v1 skeleton: "My page" and "Admin" links come with F1 and F2.
-// prefetch={false} on links to pages that don't exist yet, so the skeleton logs no 404s.
-export function Header() {
+// Header (design system §4): logo · "Log in" or "My page" · "Admin" (admins only) · "New post".
+// Hiding the Admin link is NOT the security: /admin checks the role on the server itself.
+export async function Header() {
+  const profile = await getProfile();
+  const isAdmin = profile?.role === "admin" && profile.status === "approved";
+
   return (
     <header className={styles.header}>
       <div className={`container ${styles.inner}`}>
@@ -23,10 +27,22 @@ export function Header() {
           Lqito
         </Link>
         <nav aria-label="Main" className={styles.nav}>
-          <Link href="/login" prefetch={false} className="btn btn-text">
-            Log in
-          </Link>
-          <Link href="/new" prefetch={false} className="btn btn-primary">
+          {isAdmin && (
+            <Link href="/admin" className="btn btn-text" aria-label="Admin">
+              <Shield size={18} aria-hidden="true" />
+              <span className={styles.hideOnSmall}>Admin</span>
+            </Link>
+          )}
+          {profile ? (
+            <Link href="/me" className="btn btn-text">
+              My page
+            </Link>
+          ) : (
+            <Link href="/login" className="btn btn-text">
+              Log in
+            </Link>
+          )}
+          <Link href="/new" className="btn btn-primary">
             <Plus size={18} aria-hidden="true" />
             New post
           </Link>
