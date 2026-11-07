@@ -171,3 +171,26 @@ main.container {
     opacity: 0.88;
   }
 }
+
+/* Layout helpers */
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.panel {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  padding: var(--space-5) var(--space-4);
+}
+
+.narrow {
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+.panel > h1 {
+  margin-bottom: var(--space-2);
+}

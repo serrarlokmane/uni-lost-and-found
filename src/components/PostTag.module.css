@@ -1,0 +1,152 @@
+.tag {
+  display: flex;
+  min-height: 96px;
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  color: var(--color-fg);
+  text-decoration: none;
+}
+
+a.tag:hover .title {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Resolved: the stub fades to grey; the text keeps full contrast (opacity would break WCAG AA). */
+.resolved .stub {
+  background: var(--color-bg);
+  color: var(--color-muted-fg);
+}
+
+/* The stub: coloured part of the tag with the punched hole and the tear line. */
+.stub {
+  flex: none;
+  width: 76px;
+  padding: var(--space-3) var(--space-2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+  border-right: 2px dashed currentColor;
+}
+
+.lost {
+  background: var(--color-lost-tag);
+  color: var(--color-fg);
+}
+
+.found {
+  background: var(--color-found-tag);
+  color: var(--color-found);
+}
+
+.hole {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--color-bg);
+  border: 1.5px solid currentColor;
+}
+
+.typeWord {
+  font-family: var(--font-heading), system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 17px;
+}
+
+.ref {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-fg);
+}
+
+.body {
+  min-width: 0;
+  padding: var(--space-3) var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.category {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-muted-fg);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 0 var(--space-2);
+  border: 1.5px solid currentColor;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.badgeFound {
+  color: var(--color-found);
+}
+
+.badgeLost {
+  color: var(--color-lost);
+}
+
+.badgeMuted {
+  color: var(--color-muted-fg);
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-heading), system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.3;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-3);
+  font-size: 14px;
+  color: var(--color-muted-fg);
+}
+
+.metaItem {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+/* Details page: a bigger tag at the top. */
+.big .stub {
+  width: 96px;
+  padding-top: var(--space-4);
+}
+
+.big .typeWord {
+  font-size: 20px;
+}
+
+.big .title {
+  font-size: 24px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .tag {
+    transition: border-color 150ms ease;
+  }
+  a.tag:hover {
+    border-color: var(--color-input-border);
+  }
+}
