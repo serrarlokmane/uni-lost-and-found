@@ -17,6 +17,18 @@
 - **You write the minutes of the meeting on Wed Nov 25 (rehearsal 1)**: copy `docs/minutes/TEMPLATE.md`, fill it during the meeting, open the PR the same evening.
 - **After each task:** add one row to "My work log" at the bottom of this file (in the same PR as the task when you can).
 
+## What is left for you (updated Sat Nov 7)
+
+All the v1 pages exist now (PRs [#22](https://github.com/serrarlokmane/uni-lost-and-found/pull/22) to [#27](https://github.com/serrarlokmane/uni-lost-and-found/pull/27)). Write your scripts from them; you run them on the live URL once Sif's Render service is up (Wed Nov 18).
+
+| Task | Deadline |
+|---|---|
+| Client test script `docs/tests/test-script.md` (every journey in `PROJECT.md` §7) | Wed Nov 11 |
+| Security test plan `docs/tests/security-plan.md` (every role, XSS/SQLi strings for each form field) | Fri Nov 13 |
+| Guided client test on the live URL; each problem becomes an issue for Lokmane | Thu Nov 19 |
+| Security tests round 1 + accessibility test (design-system §8 checklist); results in `docs/tests/security-report.md` | Fri Nov 20 |
+| Security tests round 2 on the live URL | Sun Nov 22 |
+
 ## Week 1 — Foundations (Nov 7 → Nov 13)
 
 ### Saturday Nov 7

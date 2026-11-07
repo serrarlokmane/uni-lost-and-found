@@ -20,6 +20,23 @@
 - **Every Friday before the meeting:** screenshot the board → `docs/evidence/board/<date>.png`, and copy the 5 "My work log" tables into `docs/work-log.md`.
 - **After each task:** add one row to "My work log" at the bottom of this file (in the same PR as the task when you can).
 
+## What is left for you (updated Sat Nov 7)
+
+Lokmane finished all the v1 app code. The PRs are stacked: review them in this order (each one shows only its own changes). Pull the branch, `npm run dev`, follow the "How to test" steps in the PR, then approve or ask for changes. There are 9 PRs instead of 1 a day, so start now.
+
+| Task | Deadline |
+|---|---|
+| Review: design system, PR [#4](https://github.com/serrarlokmane/uni-lost-and-found/pull/4) | Sun Nov 8 |
+| Review: app skeleton, PR [#5](https://github.com/serrarlokmane/uni-lost-and-found/pull/5) | Mon Nov 9 |
+| Review: Supabase client, auth helpers, zod, middleware, PR [#13](https://github.com/serrarlokmane/uni-lost-and-found/pull/13) | Fri Nov 13 |
+| Review: F1 sign-up, login, logout, pending page, PR [#22](https://github.com/serrarlokmane/uni-lost-and-found/pull/22) | Sat Nov 14 |
+| Review: F5 + F6 home, search, filters, post details, PR [#23](https://github.com/serrarlokmane/uni-lost-and-found/pull/23) | Sun Nov 15 |
+| Review: F3 + F9 new post, My page, close post, PR [#24](https://github.com/serrarlokmane/uni-lost-and-found/pull/24) | Mon Nov 16 |
+| Review: F2 + F4 + F10 admin dashboard, PR [#25](https://github.com/serrarlokmane/uni-lost-and-found/pull/25) | Tue Nov 17 |
+| Review: F7 + F8 claims, PR [#26](https://github.com/serrarlokmane/uni-lost-and-found/pull/26) | Wed Nov 18 |
+| Review: data-layer tests, PR [#27](https://github.com/serrarlokmane/uni-lost-and-found/pull/27) | Thu Nov 19 |
+| Do not review or merge PR [#28](https://github.com/serrarlokmane/uni-lost-and-found/pull/28) (Student Card code): it stays a draft until the presentation | Fri Nov 27 |
+
 ## Week 1 — Foundations (Nov 7 → Nov 13)
 
 ### Saturday Nov 7

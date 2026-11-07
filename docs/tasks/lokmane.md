@@ -18,6 +18,29 @@
 - **You write the minutes of the meeting on Thu Nov 26 (rehearsal 2)**: copy `docs/minutes/TEMPLATE.md`, fill it during the meeting, open the PR the same evening.
 - **After each task:** add one row to "My work log" at the bottom of this file (in the same PR as the task when you can).
 
+## What is left for me (updated Sat Nov 7)
+
+All the v1 code (F1–F11), the tests and the Student Card change are finished and open as PRs. What is left:
+
+| Task | Deadline |
+|---|---|
+| Apply SQL 1 ([#9](https://github.com/serrarlokmane/uni-lost-and-found/pull/9)) to the cloud Supabase project, after Anfel approves and I merge | Tue Nov 10 |
+| Apply SQL 2 ([#10](https://github.com/serrarlokmane/uni-lost-and-found/pull/10)) to the cloud project, after Anfel approves and I merge | Wed Nov 11 |
+| Apply SQL 3 ([#11](https://github.com/serrarlokmane/uni-lost-and-found/pull/11)) to the cloud project, after Anfel approves and I merge; run the test SQL on it | Thu Nov 12 |
+| Review Sif's Dockerfile, compose and `ci.yml` PRs (the same day they are opened) | Thu Nov 12 |
+| Test the full journey on the live Render URL (sign-up, approve, post, search, claim, hand-over) | Thu Nov 19 |
+| Fix the `must-fix` issues from Aya's tests | Sat Nov 21 |
+| Apply the Student Card migration ([#29](https://github.com/serrarlokmane/uni-lost-and-found/pull/29)) to the cloud project, after Anfel approves and I merge | Sun Nov 22 |
+| Merge the Student Card code ([#28](https://github.com/serrarlokmane/uni-lost-and-found/pull/28)) live during the presentation | Fri Nov 27 |
+
+**Things only I can do by hand:**
+
+| Task | Deadline |
+|---|---|
+| Turn off "Confirm email" in Supabase (Authentication → Sign In / Providers → Email) | Fri Nov 13 |
+| Invite Anfel to the Supabase project with the Developer role | Sat Nov 7 |
+| Merge each PR after it is approved, in order: [#4](https://github.com/serrarlokmane/uni-lost-and-found/pull/4), [#5](https://github.com/serrarlokmane/uni-lost-and-found/pull/5), [#13](https://github.com/serrarlokmane/uni-lost-and-found/pull/13), [#22](https://github.com/serrarlokmane/uni-lost-and-found/pull/22), [#23](https://github.com/serrarlokmane/uni-lost-and-found/pull/23), [#24](https://github.com/serrarlokmane/uni-lost-and-found/pull/24), [#25](https://github.com/serrarlokmane/uni-lost-and-found/pull/25), [#26](https://github.com/serrarlokmane/uni-lost-and-found/pull/26), [#27](https://github.com/serrarlokmane/uni-lost-and-found/pull/27); SQL: [#9](https://github.com/serrarlokmane/uni-lost-and-found/pull/9), [#10](https://github.com/serrarlokmane/uni-lost-and-found/pull/10), [#11](https://github.com/serrarlokmane/uni-lost-and-found/pull/11), [#29](https://github.com/serrarlokmane/uni-lost-and-found/pull/29) | the same day as the approval, all by Thu Nov 19 (SQL 1–3 by Thu Nov 12) |
+
 ## Week 1 — Foundations (Nov 7 → Nov 13)
 
 ### Saturday Nov 7
@@ -37,70 +60,82 @@
 
 - [ ] **PR: PROJECT.md, PLAN.md, CLAUDE.md, design system** — due Sun 8
   - Done when: merged after Younes approves
+  - Sat Nov 7: PROJECT.md, PLAN.md and CLAUDE.md merged in [#1](https://github.com/serrarlokmane/uni-lost-and-found/pull/1). Design system ready in PR [#4](https://github.com/serrarlokmane/uni-lost-and-found/pull/4) (issue [#3](https://github.com/serrarlokmane/uni-lost-and-found/issues/3)), waiting for Younes's review.
 
 - [ ] **Dev setup** — due Sun 8 — with: Lokmane, Sif, Younes
   - Done when: Node 24, Git, VS Code, Docker Desktop; `node -v` and `docker run hello-world` work (Younes needs it to run PRs locally)
 
 ### Monday Nov 9
 
-- [ ] **App skeleton** — due Mon 9
+- [x] **App skeleton** — due Mon 9
   - Done when: Next.js 15 (TypeScript, App Router, `src/`, ESLint, no Tailwind), design-system colors and fonts, header, `/api/health` returning `{"status":"ok"}`, Prettier (`format`, `format:check`), Vitest with one passing test
+  - Done Sat Nov 7: PR [#5](https://github.com/serrarlokmane/uni-lost-and-found/pull/5), issue [#2](https://github.com/serrarlokmane/uni-lost-and-found/issues/2). Waiting for Younes's review.
   - AI: "Create a Next.js 15 app with TypeScript, App Router, src/ folder, ESLint, no Tailwind, using npm, then add Prettier with format and format:check scripts, Vitest with one example test, and a /api/health route."
 
 ### Tuesday Nov 10
 
-- [ ] **SQL 1: profiles, posts, RLS, trigger** — due Tue 10
+- [x] **SQL 1: profiles, posts, RLS, trigger** — due Tue 10
   - Done when: `supabase/migrations/20261110_base.sql`: `profiles`, `posts`, CHECK constraints, RLS, SELECT policies from `PROJECT.md` §5, no writes for `anon`/`authenticated`, `is_admin()`, sign-up trigger (`student` + `pending`), `create_post`, `close_post`. Reviewed by Anfel, applied.
+  - Done Sat Nov 7: PR [#9](https://github.com/serrarlokmane/uni-lost-and-found/pull/9), issue [#6](https://github.com/serrarlokmane/uni-lost-and-found/issues/6). 26 pgTAP tests pass. Waiting for Anfel's review, then I apply it.
   - AI: "Write Postgres SQL for Supabase: a profiles table linked to auth.users, filled by a trigger that copies full_name and student_id from raw_user_meta_data but always sets role 'student' and status 'pending'; a posts table with CHECK constraints; RLS on both; SELECT policies with auth.uid() and an is_admin() security definer helper; revoke writes from anon and authenticated. Explain each line."
 
 ### Wednesday Nov 11
 
-- [ ] **SQL 2: search and admin** — due Wed 11
+- [x] **SQL 2: search and admin** — due Wed 11
   - Done when: `20261111_search_admin.sql`: `search_posts` (`security invoker`, `%`/`_` escaped), `admin_log`, `admin_review_user`, `admin_review_post`. Reviewed by Anfel, applied.
+  - Done Sat Nov 7: PR [#10](https://github.com/serrarlokmane/uni-lost-and-found/pull/10), issue [#7](https://github.com/serrarlokmane/uni-lost-and-found/issues/7). 27 pgTAP tests pass. Waiting for Anfel's review, then I apply it.
 
 ### Thursday Nov 12
 
-- [ ] **SQL 3: claims + test SQL** — due Thu 12
+- [x] **SQL 3: claims + test SQL** — due Thu 12
   - Done when: `20261112_claims.sql`: `claims`, `create_claim`, `admin_decide_claim`. Reviewed by Anfel, applied; the test SQL below passes (Anfel runs it too)
+  - Done Sat Nov 7: PR [#11](https://github.com/serrarlokmane/uni-lost-and-found/pull/11), issue [#8](https://github.com/serrarlokmane/uni-lost-and-found/issues/8). 28 pgTAP tests pass. Waiting for Anfel's review, then I apply it.
 
 ### Friday Nov 13
 
-- [ ] **Supabase client, auth helpers, zod, middleware** — due Fri 13
+- [x] **Supabase client, auth helpers, zod, middleware** — due Fri 13
   - Done when: `src/lib/supabase.ts` (`server-only`, `@supabase/ssr`), `src/lib/auth.ts` (`requireApproved()`, `requireAdmin()`), zod schemas with tests, `middleware.ts` (session refresh + CSP nonce) and security headers in `next.config.ts`; `.env.example`; in Supabase: "Confirm email" off
+  - Done Sat Nov 7: PR [#13](https://github.com/serrarlokmane/uni-lost-and-found/pull/13), issue [#12](https://github.com/serrarlokmane/uni-lost-and-found/issues/12). Still to do by hand: "Confirm email" off in Supabase.
   - AI: "How do I combine @supabase/ssr session refresh and a Content-Security-Policy nonce in one Next.js 15 middleware?"
 
 ## Week 2 — Features, deploy, client test (Nov 14 → Nov 20)
 
 ### Saturday Nov 14
 
-- [ ] **F1: sign-up, login, logout, pending page** — due Sat 14
+- [x] **F1: sign-up, login, logout, pending page** — due Sat 14
   - Done when: sign-up with full name and student ID; after login users are sent by status (`pending`/`rejected`/`banned` → `/pending`)
+  - Done Sat Nov 7: PR [#22](https://github.com/serrarlokmane/uni-lost-and-found/pull/22), issue [#14](https://github.com/serrarlokmane/uni-lost-and-found/issues/14). Waiting for Younes's review.
   - AI: "In Next.js 15 with @supabase/ssr, write Server Actions for sign-up and login with useActionState, then redirect by the user's profile status."
 
 ### Sunday Nov 15
 
-- [ ] **F5 + F6: home, search, filters, post details** — due Sun 15
+- [x] **F5 + F6: home, search, filters, post details** — due Sun 15
   - Done when: home calls `search_posts` (GET `?q=&type=&category=`); `/posts/[id]` (404 if not public); empty and no-result states
+  - Done Sat Nov 7: PR [#23](https://github.com/serrarlokmane/uni-lost-and-found/pull/23), issue [#15](https://github.com/serrarlokmane/uni-lost-and-found/issues/15). Waiting for Younes's review.
 
 ### Monday Nov 16
 
-- [ ] **F3 + F9: create post, My page, close post** — due Mon 16
+- [x] **F3 + F9: create post, My page, close post** — due Mon 16
   - Done when: `/new` → zod → `create_post` → "Sent. An admin will check it soon."; `/me` with status badges and "Close post"
+  - Done Sat Nov 7: PR [#24](https://github.com/serrarlokmane/uni-lost-and-found/pull/24), issue [#16](https://github.com/serrarlokmane/uni-lost-and-found/issues/16). Waiting for Younes's review.
 
 ### Tuesday Nov 17
 
-- [ ] **F2 + F4 + F10: admin dashboard** — due Tue 17
+- [x] **F2 + F4 + F10: admin dashboard** — due Tue 17
   - Done when: `/admin` for admins only (404 otherwise, checked in the page and every Server Action); tabs Accounts, Posts, Log; Approve / Reject (reason) / Ban
+  - Done Sat Nov 7: PR [#25](https://github.com/serrarlokmane/uni-lost-and-found/pull/25), issue [#17](https://github.com/serrarlokmane/uni-lost-and-found/issues/17). Waiting for Younes's review.
 
 ### Wednesday Nov 18
 
-- [ ] **F7 + F8: claims** — due Wed 18
+- [x] **F7 + F8: claims** — due Wed 18
   - Done when: "This is mine" / "I found it" form; admin Claims tab; "My claims" on `/me` with the hand-over message
+  - Done Sat Nov 7: PR [#26](https://github.com/serrarlokmane/uni-lost-and-found/pull/26), issue [#18](https://github.com/serrarlokmane/uni-lost-and-found/issues/18). Waiting for Younes's review.
 
 ### Thursday Nov 19
 
-- [ ] **Data-layer tests** — due Thu 19
+- [x] **Data-layer tests** — due Thu 19
   - Done when: Vitest tests mock Supabase `rpc()` and check the parameters of every function; `npm test` passes
+  - Done Sat Nov 7: PR [#27](https://github.com/serrarlokmane/uni-lost-and-found/pull/27), issue [#19](https://github.com/serrarlokmane/uni-lost-and-found/issues/19). 51 Vitest tests pass.
 
 ### Friday Nov 20
 
@@ -116,13 +151,15 @@
 
 ### Sunday Nov 22
 
-- [ ] **Student Card migration (applied in advance)** — due Sun 22
+- [x] **Student Card migration (applied in advance)** — due Sun 22
   - Done when: a new migration adds `student_card` to the category CHECK constraint, merged and applied. Safe: the old code never sends it.
+  - Done Sat Nov 7: PR [#29](https://github.com/serrarlokmane/uni-lost-and-found/pull/29), issue [#20](https://github.com/serrarlokmane/uni-lost-and-found/issues/20). Waiting for Anfel's review, then I apply it.
 
 ### Monday Nov 23
 
-- [ ] **Student Card code (draft PR, not merged)** — due Mon 23
+- [x] **Student Card code (draft PR, not merged)** — due Mon 23
   - Done when: branch `feat/student-card`; CI green; PR left as a draft for the demo
+  - Done Sat Nov 7: PR [#28](https://github.com/serrarlokmane/uni-lost-and-found/pull/28), issue [#21](https://github.com/serrarlokmane/uni-lost-and-found/issues/21). Draft PR, merged live at the presentation.
 
 ### Tuesday Nov 24
 
@@ -157,15 +194,18 @@
 
 | Date | Task | Time spent | Proof (link) |
 |---|---|---|---|
-| 2026-11-06 | App skeleton: Next.js 15, design tokens, header, `/api/health`, Prettier, Vitest | 3h | [#2](https://github.com/serrarlokmane/uni-lost-and-found/issues/2) |
-| 2026-11-07 | Design system: "Tag" direction (3 directions compared, A chosen) | 2h | [#3](https://github.com/serrarlokmane/uni-lost-and-found/issues/3) |
-| 2026-11-07 | SQL 1: profiles, posts, RLS, trigger, create_post, close_post (26 pgTAP tests) | 2h | [#6](https://github.com/serrarlokmane/uni-lost-and-found/issues/6) |
-| 2026-11-07 | SQL 2: search_posts, admin_log, admin review, admin lists (27 tests) | 1.5h | [#7](https://github.com/serrarlokmane/uni-lost-and-found/issues/7) |
-| 2026-11-07 | SQL 3: claims, create_claim, admin_decide_claim (28 tests) | 1.5h | [#8](https://github.com/serrarlokmane/uni-lost-and-found/issues/8) |
-| 2026-11-07 | Supabase client, auth helpers, zod, middleware (CSP nonce), security headers | 2h | [#12](https://github.com/serrarlokmane/uni-lost-and-found/issues/12) |
-| 2026-11-07 | F1: sign-up, login, logout, pending page (+ HttpOnly cookie fix) | 2h | [#14](https://github.com/serrarlokmane/uni-lost-and-found/issues/14) |
-| 2026-11-07 | F5 + F6: home, search, filters, post details, 404 | 2h | [#15](https://github.com/serrarlokmane/uni-lost-and-found/issues/15) |
-| 2026-11-07 | F3 + F9: new post, My page, close post | 2h | [#16](https://github.com/serrarlokmane/uni-lost-and-found/issues/16) |
-| 2026-11-07 | F2 + F4 + F10: admin dashboard | 2.5h | [#17](https://github.com/serrarlokmane/uni-lost-and-found/issues/17) |
-| 2026-11-07 | F7 + F8: claims | 1.5h | [#18](https://github.com/serrarlokmane/uni-lost-and-found/issues/18) |
-| 2026-11-07 | Data-layer tests (18 tests), security self-review, full journey on a clean DB | 1.5h | [#19](https://github.com/serrarlokmane/uni-lost-and-found/issues/19) |
+| 2026-11-07 | Design system: "Tag" direction (3 directions compared, A chosen) | 2h | PR [#4](https://github.com/serrarlokmane/uni-lost-and-found/pull/4), issue [#3](https://github.com/serrarlokmane/uni-lost-and-found/issues/3) |
+| 2026-11-07 | App skeleton: Next.js 15, design tokens, header, `/api/health`, Prettier, Vitest | 3h | PR [#5](https://github.com/serrarlokmane/uni-lost-and-found/pull/5), issue [#2](https://github.com/serrarlokmane/uni-lost-and-found/issues/2) |
+| 2026-11-07 | SQL 1: profiles, posts, RLS, trigger, create_post, close_post (26 pgTAP tests) | 2h | PR [#9](https://github.com/serrarlokmane/uni-lost-and-found/pull/9), issue [#6](https://github.com/serrarlokmane/uni-lost-and-found/issues/6) |
+| 2026-11-07 | SQL 2: search_posts, admin_log, admin review, admin lists (27 tests) | 1.5h | PR [#10](https://github.com/serrarlokmane/uni-lost-and-found/pull/10), issue [#7](https://github.com/serrarlokmane/uni-lost-and-found/issues/7) |
+| 2026-11-07 | SQL 3: claims, create_claim, admin_decide_claim (28 tests) | 1.5h | PR [#11](https://github.com/serrarlokmane/uni-lost-and-found/pull/11), issue [#8](https://github.com/serrarlokmane/uni-lost-and-found/issues/8) |
+| 2026-11-07 | Supabase client, auth helpers, zod, middleware (CSP nonce), security headers | 2h | PR [#13](https://github.com/serrarlokmane/uni-lost-and-found/pull/13), issue [#12](https://github.com/serrarlokmane/uni-lost-and-found/issues/12) |
+| 2026-11-07 | F1: sign-up, login, logout, pending page (+ HttpOnly cookie fix) | 2h | PR [#22](https://github.com/serrarlokmane/uni-lost-and-found/pull/22), issue [#14](https://github.com/serrarlokmane/uni-lost-and-found/issues/14) |
+| 2026-11-07 | F5 + F6: home, search, filters, post details, 404 | 2h | PR [#23](https://github.com/serrarlokmane/uni-lost-and-found/pull/23), issue [#15](https://github.com/serrarlokmane/uni-lost-and-found/issues/15) |
+| 2026-11-07 | F3 + F9: new post, My page, close post | 2h | PR [#24](https://github.com/serrarlokmane/uni-lost-and-found/pull/24), issue [#16](https://github.com/serrarlokmane/uni-lost-and-found/issues/16) |
+| 2026-11-07 | F2 + F4 + F10: admin dashboard | 2.5h | PR [#25](https://github.com/serrarlokmane/uni-lost-and-found/pull/25), issue [#17](https://github.com/serrarlokmane/uni-lost-and-found/issues/17) |
+| 2026-11-07 | F7 + F8: claims | 1.5h | PR [#26](https://github.com/serrarlokmane/uni-lost-and-found/pull/26), issue [#18](https://github.com/serrarlokmane/uni-lost-and-found/issues/18) |
+| 2026-11-07 | Data-layer tests (18 tests), security self-review, full journey on a clean DB | 1.5h | PR [#27](https://github.com/serrarlokmane/uni-lost-and-found/pull/27), issue [#19](https://github.com/serrarlokmane/uni-lost-and-found/issues/19) |
+| 2026-11-07 | Student Card code (draft PR for the live demo) | 0.5h | PR [#28](https://github.com/serrarlokmane/uni-lost-and-found/pull/28), issue [#21](https://github.com/serrarlokmane/uni-lost-and-found/issues/21) |
+| 2026-11-07 | Student Card migration (applied in advance) | 0.5h | PR [#29](https://github.com/serrarlokmane/uni-lost-and-found/pull/29), issue [#20](https://github.com/serrarlokmane/uni-lost-and-found/issues/20) |
+| 2026-11-07 | Progress update: work log and team task files | 0.5h | PR [#31](https://github.com/serrarlokmane/uni-lost-and-found/pull/31), issue [#30](https://github.com/serrarlokmane/uni-lost-and-found/issues/30) |
