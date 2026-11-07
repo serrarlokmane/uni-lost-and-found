@@ -1,0 +1,21 @@
+.description {
+  white-space: pre-line; /* keep the line breaks the author typed (text only, never HTML) */
+}
+
+.note,
+.noteError {
+  margin: 0;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius);
+  border: 1.5px solid currentColor;
+  background: var(--color-card);
+  font-weight: 600;
+}
+
+.note {
+  color: var(--color-found);
+}
+
+.noteError {
+  color: var(--color-lost);
+}
