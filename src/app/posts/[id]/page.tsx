@@ -6,6 +6,8 @@ import { getProfile } from "@/lib/auth";
 import { createClient } from "@/lib/supabase";
 import { uuidSchema } from "@/lib/schemas";
 import { formatDay } from "@/lib/format";
+import { ClosePostButton } from "@/app/me/ClosePostButton";
+import { ClaimForm } from "./ClaimForm";
 import styles from "./post.module.css";
 
 type Props = { params: Promise<{ id: string }> };
@@ -55,16 +57,22 @@ export default async function PostPage({ params }: Props) {
         <p className="muted">Posted {formatDay(post.created_at)}</p>
       </section>
 
-      {post.status === "published" && !profile && (
-        <section className="panel" aria-labelledby="claim-title">
+      {post.status === "published" && (
+        <section className="panel stack" aria-labelledby="claim-title">
           <h2 id="claim-title">
-            {post.type === "found" ? "Is this yours?" : "Did you find it?"}
+            {post.is_mine
+              ? "Your post"
+              : post.type === "found"
+                ? "Is this yours?"
+                : "Did you find it?"}
           </h2>
-          <p>
-            <Link href="/login">Log in</Link> to send a claim. An admin checks
-            every claim, and the item is handed over at the Lost &amp; Found
-            office.
-          </p>
+          <ActionBox
+            postId={post.id}
+            postType={post.type}
+            postTitle={post.title}
+            isMine={post.is_mine}
+            status={profile?.status}
+          />
         </section>
       )}
 
@@ -80,4 +88,54 @@ export default async function PostPage({ params }: Props) {
       </p>
     </article>
   );
+}
+
+/** What the bottom box shows, by who is looking (PROJECT.md §5, §8). */
+async function ActionBox({
+  postId,
+  postType,
+  postTitle,
+  isMine,
+  status,
+}: {
+  postId: string;
+  postType: string;
+  postTitle: string;
+  isMine: boolean;
+  status?: string;
+}) {
+  if (!status) {
+    return (
+      <p>
+        <Link href="/login">Log in</Link> to send a claim. An admin checks every
+        claim, and the item is handed over at the Lost &amp; Found office.
+      </p>
+    );
+  }
+  if (status !== "approved") {
+    return <p>Your account must be approved before you can send a claim.</p>;
+  }
+  if (isMine) {
+    return (
+      <>
+        <p>Found it yourself, or got it back? Close the post.</p>
+        <ClosePostButton postId={postId} title={postTitle} />
+      </>
+    );
+  }
+
+  const supabase = await createClient();
+  const { data: myClaim } = await supabase.rpc("my_claim_status", {
+    p_post_id: postId,
+  });
+  if (myClaim) {
+    return (
+      <p>
+        You already sent a claim for this post (
+        {myClaim === "pending" ? "waiting for the admin" : myClaim}).{" "}
+        <Link href="/me?tab=claims">See my claims</Link>
+      </p>
+    );
+  }
+  return <ClaimForm postId={postId} postType={postType} />;
 }

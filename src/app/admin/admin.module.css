@@ -174,3 +174,16 @@
   width: 1%;
   white-space: nowrap;
 }
+
+.claimTitle {
+  margin: 0;
+  font-size: 18px;
+}
+
+.quote {
+  margin: 0;
+  padding: var(--space-3) var(--space-4);
+  border-left: 4px solid var(--color-input-border);
+  background: var(--color-bg);
+  white-space: pre-line;
+}
