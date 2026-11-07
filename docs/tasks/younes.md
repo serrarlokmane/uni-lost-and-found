@@ -35,7 +35,7 @@ Lokmane finished all the v1 app code. The PRs are stacked: review them in this o
 | Review: F2 + F4 + F10 admin dashboard, PR [#25](https://github.com/serrarlokmane/uni-lost-and-found/pull/25) | Tue Nov 17 |
 | Review: F7 + F8 claims, PR [#26](https://github.com/serrarlokmane/uni-lost-and-found/pull/26) | Wed Nov 18 |
 | Review: data-layer tests, PR [#27](https://github.com/serrarlokmane/uni-lost-and-found/pull/27) | Thu Nov 19 |
-| Do not review or merge PR [#28](https://github.com/serrarlokmane/uni-lost-and-found/pull/28) (Student Card code): it stays a draft until the presentation | Fri Nov 27 |
+| Do not review or merge PR [#32](https://github.com/serrarlokmane/uni-lost-and-found/pull/32) (Student Card code): it stays a draft until the presentation | Fri Nov 27 |
 
 ## Week 1 — Foundations (Nov 7 → Nov 13)
 

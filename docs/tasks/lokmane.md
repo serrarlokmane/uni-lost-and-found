@@ -31,7 +31,7 @@ All the v1 code (F1–F11), the tests and the Student Card change are finished a
 | Test the full journey on the live Render URL (sign-up, approve, post, search, claim, hand-over) | Thu Nov 19 |
 | Fix the `must-fix` issues from Aya's tests | Sat Nov 21 |
 | Apply the Student Card migration ([#29](https://github.com/serrarlokmane/uni-lost-and-found/pull/29)) to the cloud project, after Anfel approves and I merge | Sun Nov 22 |
-| Merge the Student Card code ([#28](https://github.com/serrarlokmane/uni-lost-and-found/pull/28)) live during the presentation | Fri Nov 27 |
+| Merge the Student Card code ([#32](https://github.com/serrarlokmane/uni-lost-and-found/pull/32)) live during the presentation | Fri Nov 27 |
 
 **Things only I can do by hand:**
 
@@ -159,7 +159,7 @@ All the v1 code (F1–F11), the tests and the Student Card change are finished a
 
 - [x] **Student Card code (draft PR, not merged)** — due Mon 23
   - Done when: branch `feat/student-card`; CI green; PR left as a draft for the demo
-  - Done Sat Nov 7: PR [#28](https://github.com/serrarlokmane/uni-lost-and-found/pull/28), issue [#21](https://github.com/serrarlokmane/uni-lost-and-found/issues/21). Draft PR, merged live at the presentation.
+  - Done Sat Nov 7: PR [#32](https://github.com/serrarlokmane/uni-lost-and-found/pull/32), issue [#21](https://github.com/serrarlokmane/uni-lost-and-found/issues/21). Draft PR, merged live at the presentation.
 
 ### Tuesday Nov 24
 
@@ -206,6 +206,6 @@ All the v1 code (F1–F11), the tests and the Student Card change are finished a
 | 2026-11-07 | F2 + F4 + F10: admin dashboard | 2.5h | PR [#25](https://github.com/serrarlokmane/uni-lost-and-found/pull/25), issue [#17](https://github.com/serrarlokmane/uni-lost-and-found/issues/17) |
 | 2026-11-07 | F7 + F8: claims | 1.5h | PR [#26](https://github.com/serrarlokmane/uni-lost-and-found/pull/26), issue [#18](https://github.com/serrarlokmane/uni-lost-and-found/issues/18) |
 | 2026-11-07 | Data-layer tests (18 tests), security self-review, full journey on a clean DB | 1.5h | PR [#27](https://github.com/serrarlokmane/uni-lost-and-found/pull/27), issue [#19](https://github.com/serrarlokmane/uni-lost-and-found/issues/19) |
-| 2026-11-07 | Student Card code (draft PR for the live demo) | 0.5h | PR [#28](https://github.com/serrarlokmane/uni-lost-and-found/pull/28), issue [#21](https://github.com/serrarlokmane/uni-lost-and-found/issues/21) |
+| 2026-11-07 | Student Card code (draft PR for the live demo) | 0.5h | PR [#32](https://github.com/serrarlokmane/uni-lost-and-found/pull/32), issue [#21](https://github.com/serrarlokmane/uni-lost-and-found/issues/21) |
 | 2026-11-07 | Student Card migration (applied in advance) | 0.5h | PR [#29](https://github.com/serrarlokmane/uni-lost-and-found/pull/29), issue [#20](https://github.com/serrarlokmane/uni-lost-and-found/issues/20) |
 | 2026-11-07 | Progress update: work log and team task files | 0.5h | PR [#31](https://github.com/serrarlokmane/uni-lost-and-found/pull/31), issue [#30](https://github.com/serrarlokmane/uni-lost-and-found/issues/30) |
