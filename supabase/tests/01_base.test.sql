@@ -92,7 +92,7 @@ select throws_ok(
                                'Library', current_date) $$,
   '22023', 'invalid_input', 'a title shorter than 3 characters is refused');
 select throws_ok(
-  $$ select public.create_post('lost', 'student_card', 'My card', 'Blue keychain near the door',
+  $$ select public.create_post('lost', 'weapons', 'My card', 'Blue keychain near the door',
                                'Library', current_date) $$,
   '22023', 'invalid_input', 'an unknown category is refused');
 
