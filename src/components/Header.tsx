@@ -44,7 +44,10 @@ export async function Header() {
           )}
           <Link href="/new" className="btn btn-primary">
             <Plus size={18} aria-hidden="true" />
-            New post
+            {/* With 3 links (admins), the text hides on small phones; the name stays "New post". */}
+            <span className={isAdmin ? styles.hideOnSmallText : undefined}>
+              New post
+            </span>
           </Link>
         </nav>
       </div>
