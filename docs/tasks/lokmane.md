@@ -169,3 +169,5 @@
 | 2026-11-07 | F2 + F4 + F10: admin dashboard | 2.5h | [#17](https://github.com/serrarlokmane/uni-lost-and-found/issues/17) |
 | 2026-11-07 | F7 + F8: claims | 1.5h | [#18](https://github.com/serrarlokmane/uni-lost-and-found/issues/18) |
 | 2026-11-07 | Data-layer tests (18 tests), security self-review, full journey on a clean DB | 1.5h | [#19](https://github.com/serrarlokmane/uni-lost-and-found/issues/19) |
+| 2026-11-07 | Student Card migration (applied in advance) | 0.5h | [#20](https://github.com/serrarlokmane/uni-lost-and-found/issues/20) |
+| 2026-11-07 | Student Card code (draft PR for the live demo) | 0.5h | [#21](https://github.com/serrarlokmane/uni-lost-and-found/issues/21) |
