@@ -26,9 +26,10 @@ The app is ready for Docker: `next.config.ts` already has `output: "standalone"`
 | Dockerfile: multi-stage, `node:24-alpine`, user `node`; the image starts with `node .next/standalone/server.js` (not `next start`); `HEALTHCHECK` on `/api/health` | Tue Nov 10 |
 | docker-compose | Wed Nov 11 |
 | CI workflow `.github/workflows/ci.yml`: format, lint, typecheck, test, build, Docker build; green | Thu Nov 12 |
-| Push the image to GHCR (`deploy.yml`) | Tue Nov 17 |
-| Render service from the GHCR image with the 2 env vars `SUPABASE_URL` and `SUPABASE_PUBLISHABLE_KEY` (Environment tab, never in a file); send the URL to Lokmane | Wed Nov 18 |
-| Auto-deploy with the Render deploy hook | Sat Nov 21 |
+| Check the Vercel project `lqito`: production = `main`, a preview URL on every PR, the 2 env vars set (never in a file) | Wed Nov 18 |
+| Pipeline end-to-end test: a small PR → CI green → approval → merge → live on Vercel; fill the timing table in `docs/report/cicd.md` | Sun Nov 22 |
+
+> **Changed Sat Nov 7:** hosting moved from Render to Vercel. GHCR, `deploy.yml`, the Render service and the deploy hook are no longer needed. The Dockerfile and compose stay (local runs + the CI Docker build).
 
 ## Week 1 — Foundations (Nov 7 → Nov 13)
 
@@ -79,12 +80,12 @@ The app is ready for Docker: `next.config.ts` already has `output: "standalone"`
 
 ### Tuesday Nov 17
 
-- [ ] **Push the image to GHCR** — due Tue 17
+- [ ] ~~**Push the image to GHCR**~~ — not needed (Vercel builds from GitHub)
   - Done when: on `main` only, `.github/workflows/deploy.yml` pushes `ghcr.io/<owner>/uni-lost-and-found:<sha>` and `:latest`; package public (no secrets in the image)
 
 ### Wednesday Nov 18
 
-- [ ] **Render service** — due Wed 18
+- [ ] ~~**Render service**~~ — replaced by the Vercel project `lqito` (check it on Wed 18)
   - Done when: Render web service from the GHCR image, health check `/api/health`, `SUPABASE_URL` and `SUPABASE_PUBLISHABLE_KEY` in the Environment tab; HTTPS URL works
   - AI: "How do I deploy a public GHCR Docker image to Render's free web service with a health check path and environment variables?"
 
@@ -92,7 +93,7 @@ The app is ready for Docker: `next.config.ts` already has `output: "standalone"`
 
 ### Saturday Nov 21
 
-- [ ] **Auto-deploy** — due Sat 21
+- [ ] ~~**Auto-deploy**~~ — Vercel deploys `main` by itself (no deploy hook)
   - Done when: after the GHCR push on `main`, `deploy.yml` calls the Render deploy hook from the GitHub Secret `RENDER_DEPLOY_HOOK_URL` (never printed)
 
 ### Sunday Nov 22
@@ -126,7 +127,7 @@ The app is ready for Docker: `next.config.ts` already has `output: "standalone"`
 ### Friday Nov 27
 
 - [ ] **Presentation** — due Fri 27 — with: Everyone
-  - Done when: open the site 2 minutes before (Render wakes up), then present
+  - Done when: open the live site and check `/api/health`, then present
 
 ## My work log
 

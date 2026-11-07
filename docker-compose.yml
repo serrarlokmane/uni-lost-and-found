@@ -1,0 +1,18 @@
+# Run the app locally in Docker: docker compose up --build  ->  http://localhost:3000
+# Needs a .env file (copy .env.example and fill it yourself). Never commit .env.
+services:
+  web:
+    build: .
+    image: lqito:local
+    ports:
+      - "3000:3000"
+    env_file: .env
+    read_only: true
+    tmpfs:
+      - /tmp
+      - /app/.next/cache
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    restart: unless-stopped
