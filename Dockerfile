@@ -3,13 +3,13 @@
 # Run:    docker compose up --build   (reads SUPABASE_URL and SUPABASE_PUBLISHABLE_KEY from .env)
 
 # 1. Install dependencies (cached while package-lock.json does not change)
-FROM node:24-alpine AS deps
+FROM node:26-alpine AS deps
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci --no-audit --no-fund
 
 # 2. Build the app. next.config.ts sets output: "standalone".
-FROM node:24-alpine AS build
+FROM node:26-alpine AS build
 WORKDIR /app
 ENV NEXT_TELEMETRY_DISABLED=1
 COPY --from=deps /app/node_modules ./node_modules
@@ -17,7 +17,7 @@ COPY . .
 RUN npm run build
 
 # 3. Runtime: only the standalone server and the static files, run as the "node" user.
-FROM node:24-alpine AS run
+FROM node:26-alpine AS run
 WORKDIR /app
 ENV NODE_ENV=production \
     NEXT_TELEMETRY_DISABLED=1 \
