@@ -14,11 +14,11 @@
   },
   "dependencies": {
     "@supabase/ssr": "0.12.7",
-    "@supabase/supabase-js": "2.118.0",
-    "lucide-react": "^1.70.0",
+    "@supabase/supabase-js": "2.119.0",
+    "lucide-react": "^1.72.0",
     "next": "15.5.29",
-    "react": "19.1.0",
-    "react-dom": "19.1.0",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
     "server-only": "0.0.1",
     "zod": "4.6.7"
   },
@@ -30,7 +30,7 @@
     "eslint": "^9",
     "eslint-config-next": "15.5.29",
     "eslint-config-prettier": "^10.1.8",
-    "prettier": "^3.9.10",
+    "prettier": "^3.10.1",
     "typescript": "^5",
     "vitest": "^5.1.0"
   },
